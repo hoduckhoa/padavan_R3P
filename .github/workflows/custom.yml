@@ -218,6 +218,8 @@ jobs:
           fi
       - name: Start build firmware
         run: |
+          sudo apt update
+          sudo apt install -y libtool-bin gperf python3-docutils autopoint gettext ccache libxml2-dev
           make ${{ matrix.target }} TOOLCHAIN=${{ matrix.toolchain }}
           nano=""
           if ${{ github.event.inputs.nanoversion == 'true' }}; then
